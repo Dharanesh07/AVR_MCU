@@ -1,0 +1,10 @@
+-I/usr/lib/avr/include
+-F_CPU=2000000UL
+-std=c17
+--target=avr
+-mmcu=atmega328p
+-nostdinc
+-ffreestanding
+
+
+#-isystem/usr/avr/include

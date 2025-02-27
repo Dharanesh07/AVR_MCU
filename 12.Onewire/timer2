@@ -1,0 +1,33 @@
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+#include "usart.h"
+#include "adc.h"
+#include "timer.c"
+#include <math.h>
+#include <avr/sleep.h>
+#define TIMER_COMPARE_VAL 31
+#define CHECK 1000
+
+void timer2_init();
+void get_temp();
+int global_time =0;
+unit16_t temp;
+
+int main(void)
+{
+    sei();
+    timer2_init();
+}
+
+ISR(TIMER2_COMPA_vect) {
+    
+    global_time += 1;
+    if(global_time % CHECK == 0)
+    {
+        printf("Printing every 10s");
+        get_light();
+    }
+    
+
+}
